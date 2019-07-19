@@ -15,60 +15,40 @@ import {
   View,
   Text,
   Image,
-  StatusBar
+  StatusBar,
+  Dimensions
 } from "react-native";
 import { Button, Card, Icon, ListItem } from "react-native-elements";
 import { connect } from "react-redux";
 import { getPlaylistList } from "../redux/actions/playerActions";
 
-class ViewPlaylistsScreen extends Component {
-  static navigationOptions = {
-    header: null
-  };
-
+class PlaylistScreen extends Component {
   render() {
-    keyExtractor = (item, index) => {
-      return index.toString();
-    };
+    const pageWidth = Dimensions.get("screen").width;
 
-    renderItem = ({ item, index }) => {
-      let subtitle = "";
-      if (item.hasOwnProperty("tracks")) {
-        item.tracks.forEach(
-          (track, index) =>
-            (subtitle +=
-              track.title + (index < item.tracks.length - 1 ? ", " : ""))
-        );
-      }
-
+    const playlist = this.props.navigation.getParam("playlist", null);
+    const trackItems = playlist.tracks.map((item, index) => {
       return (
         <ListItem
           title={item.title}
-          subtitle={<Text numberOfLines={1}>{subtitle}</Text>}
+          subtitle={"some artist place holder"}
           leftAvatar={{ source: require("../images/ariana-grande.jpg") }}
-          onPress={() =>
-            this.props.navigation.navigate("PlaylistDetails", {
-              playlist: item
-            })
-          }
+          rightElement={<Text>6:45</Text>}
         />
       );
-    };
+    });
 
     return (
-      <Fragment>
-        <Button
-          title="reload playlists"
-          type="clear"
-          onPress={() => this.props.getPlaylistList()}
-        />
-
-        <FlatList
-          keyExtractor={this.keyExtractor}
-          data={this.props.playlists}
-          renderItem={renderItem}
-        />
-      </Fragment>
+      <ScrollView>
+        <View>
+          <Image
+            style={{ width: pageWidth, height: pageWidth }}
+            source={require("../images/ariana-grande.jpg")}
+            resizeMode="cover"
+          />
+          {trackItems}
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -88,4 +68,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ViewPlaylistsScreen);
+)(PlaylistScreen);

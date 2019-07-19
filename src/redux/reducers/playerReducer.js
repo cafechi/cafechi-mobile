@@ -7,10 +7,64 @@ import {
 const initialState = {
   playlists: [
     {
-      title: "test title 1"
+      id: 1,
+      title: "Mint",
+      tracks: [
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        },
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        },
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        },
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        }
+      ]
     },
     {
-      title: "test title 2"
+      id: 2,
+      title: "Mega Hit",
+      tracks: [
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        }
+      ]
+    },
+    {
+      id: 3,
+      title: "Easy",
+      tracks: [
+        {
+          id: 1,
+          title: "wakeup in sky",
+          resource_id: "3434323432",
+          file: "/media/media/q.pm3",
+          playlists: [1]
+        }
+      ]
     }
   ],
   playlistsLoading: false,

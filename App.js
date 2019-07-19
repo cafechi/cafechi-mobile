@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -17,26 +17,40 @@ import {
 } from "react-native";
 import { Button, ThemeProvider } from "react-native-elements";
 import { Provider } from "react-redux";
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import ViewPlaylistsScreen from "./src/screens/ViewPlaylistsScreen";
+import PlaylistScreen from "./src/screens/PlaylistScreen";
 import configureStore from "./src/redux/configure";
 
 const store = configureStore();
 
-const App = () => {
-  return <ViewPlaylistsScreen />;
-};
+const AppNavigator = createStackNavigator(
+  {
+    ViewPlaylists: {
+      screen: ViewPlaylistsScreen
+    },
+    PlaylistDetails: {
+      screen: PlaylistScreen
+    }
+  },
+  {
+    initialRouteName: "ViewPlaylists"
+  }
+);
 
-class AppContianer extends React.Component {
+const MyApp = createAppContainer(AppNavigator);
+
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <ThemeProvider>
-          <App />
+          <MyApp />
         </ThemeProvider>
       </Provider>
     );
   }
 }
 
-export default AppContianer;
+export default App;
