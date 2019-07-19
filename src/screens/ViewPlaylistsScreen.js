@@ -64,7 +64,7 @@ class ViewPlaylistsScreen extends Component {
         />
 
         <FlatList
-          keyExtractor={this.keyExtractor}
+          keyExtractor={keyExtractor}
           data={this.props.playlists}
           renderItem={renderItem}
         />

@@ -1,7 +1,7 @@
 import {
   GET_PLAYLIST_LIST_START,
   GET_PLAYLIST_LIST_SUCCESS,
-  GET_PLAYLIST_LIST_FAIL
+  NETWORK_ERROR
 } from "../actions/playerActions";
 
 const initialState = {
@@ -84,7 +84,7 @@ function palyerReducer(state = initialState, action) {
         playlists: action.payload,
         playlistsLoading: false
       };
-    case GET_PLAYLIST_LIST_FAIL:
+    case NETWORK_ERROR:
       return {
         ...state,
         playlistsLoading: false,

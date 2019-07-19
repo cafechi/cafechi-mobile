@@ -39,13 +39,20 @@ const AppNavigator = createStackNavigator(
   }
 );
 
+const theme = {
+  colors: {
+    primary: "green",
+    secondary: "#000000"
+  }
+};
+
 const MyApp = createAppContainer(AppNavigator);
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ThemeProvider>
+        <ThemeProvider theme={theme}>
           <MyApp />
         </ThemeProvider>
       </Provider>
